@@ -10,26 +10,32 @@
 	<script src="libraries/p5.js"></script>
 	<script src="libraries/p5.dom.js"></script>
 	<script src="libraries/p5.sound.js"></script>
-	<script src="sketch.js"></script>
+	<script src="main.js"></script>
 	<script src="snake.js"></script>
+	<script src="cell.js"></script>
 	<script src="food.js"></script>
 	<script src="board.js"></script>
-	<script src="cell.js"></script>
-
-
-
-	<p>Score: <a id="score">0</a></p>
 
 	<style>
 		body {
 			margin:0;
 			padding:0;
 			overflow: hidden;
+			text-align: center;
+			font-family: sans-serif;
 		}
 		canvas {
+			display: block;
 			margin:auto;
+			border: 1px solid black;
+		}
+		.score {
+			font-size: 18px;
 		}
 	</style>
+
+	<p class="score">Score: <a id="score">0</a></p>
+
 </head>
 <body>
 </body>

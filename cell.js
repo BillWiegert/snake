@@ -1,13 +1,11 @@
 class Cell {
-  constructor(pos, color, isFood = false) {
-    this.x = pos.x;
-    this.y = pos.y;
+  constructor(pos, color) {
+    this.pos = pos;
     this.color = color;
-    this.isFood = isFood;
   }
 
   show() {
     fill(this.color);
-    rect(this.x, this.y, CELL_SIZE, CELL_SIZE)
+    rect(this.pos.x, this.pos.y, CELL_SIZE, CELL_SIZE)
   }
 }

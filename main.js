@@ -6,7 +6,7 @@ const SHOW_GRID = true;
 function setup() {
 	createCanvas(CELL_SIZE * GRID_SIZE, CELL_SIZE * GRID_SIZE);
 	snake = new Snake();
-	food = new Food();
+	food = new Food(createVector(CELL_SIZE * GRID_SIZE * 0.75, CELL_SIZE * GRID_SIZE * 0.5));
 	board = new Board();
 	frameRate(FRAME_RATE);
 }

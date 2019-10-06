@@ -45,6 +45,7 @@ class Snake {
 		this.length++;
 	}
 
+	// TODO: Alerts are awful
 	die() {
 		alert("You Died!\nScore: " + this.length);
 		this.initialize();
