@@ -1,5 +1,6 @@
 class Board {
   constructor() {
+    this.cells = [];
     this.grid = this.populateGrid();
   }
 
@@ -17,10 +18,32 @@ class Board {
         }
 
         grid[i][j] = new Cell(pos, color);
+
+        //array of 2 element arrays [[0,0],[0,1],...]
+        this.cells.push([pos.x, pos.y]);
       }
     }
 
     return grid;
+  }
+
+  getVacantCells() {
+    let vacantCells = [];
+    let occupiedCells = {};
+
+    for (let i = 0; i < snake.tail.length; i++) {
+      occupiedCells[[snake.tail[i].x, snake.tail[i].y]] = true;
+    }
+
+    occupiedCells[[snake.pos.x, snake.pos.y]] = true;
+
+    for (let i = 0; i < this.cells.length; i++) {
+      if (!occupiedCells[this.cells[i]]) {
+        vacantCells.push(this.cells[i]);
+      }
+    }
+
+    return vacantCells;
   }
 
   show() {

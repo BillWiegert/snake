@@ -8,12 +8,13 @@ class Food extends Cell {
 		this.pos = createVector(this.reset_pos.x, this.reset_pos.y);
 	}
 
-	//TODO: Prevent spawning food on cells occupied by the snake
 	chooseLocation() {
-		let rows = floor(width/CELL_SIZE);
-		let cols = floor(height/CELL_SIZE);
-		this.pos.x = floor(random(rows)) * CELL_SIZE;
-		this.pos.y = floor(random(cols)) * CELL_SIZE;
+		let vacantCells = board.getVacantCells();
+		let rand = floor(random(vacantCells.length - 1));
+		let newPos = vacantCells[rand];
+
+		this.pos.x = newPos[0];
+		this.pos.y = newPos[1];
 	}
 
 	consume() {
