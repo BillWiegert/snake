@@ -4,7 +4,7 @@ class Snake {
 	}
 
 	initialize() {
-		this.pos = createVector(CELL_SIZE * GRID_SIZE * 0.25, CELL_SIZE * GRID_SIZE * 0.5);
+		this.pos = createVector(CELL_SIZE * floor(GRID_SIZE * 0.25), CELL_SIZE * floor(GRID_SIZE * 0.5));
 		this.speed = createVector(0, 0);
 		this.tail = [];
 		this.length = 0;
@@ -47,7 +47,13 @@ class Snake {
 
 	// TODO: Alerts are awful
 	die() {
-		alert("You Died!\nScore: " + this.length);
+		alert("You Died!\nScore: " + this.length + "/" + MAX_SCORE);
+		this.initialize();
+		food.reset();
+	}
+
+	win() {
+		alert("You Win!\nPerfect Score: " + this.length + "/" + MAX_SCORE);
 		this.initialize();
 		food.reset();
 	}
@@ -104,6 +110,8 @@ class Snake {
 		for (let i = 0; i < this.length; i++) {
 			rect(this.tail[i].x, this.tail[i].y, CELL_SIZE, CELL_SIZE);
 		}
+		
+		fill(0, 200, 20);
 		rect(this.pos.x, this.pos.y, CELL_SIZE, CELL_SIZE);
 	}
 }

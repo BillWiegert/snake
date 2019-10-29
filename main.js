@@ -1,12 +1,13 @@
-const CELL_SIZE = 33;
+const CELL_SIZE = 30;
 const GRID_SIZE = 20;
 const FRAME_RATE = 10;
 const SHOW_GRID = true;
+const MAX_SCORE = GRID_SIZE * GRID_SIZE;
 
 function setup() {
 	createCanvas(CELL_SIZE * GRID_SIZE, CELL_SIZE * GRID_SIZE);
 	snake = new Snake();
-	food = new Food(createVector(CELL_SIZE * GRID_SIZE * 0.75, CELL_SIZE * GRID_SIZE * 0.5));
+	food = new Food(createVector(CELL_SIZE * floor(GRID_SIZE * 0.75), CELL_SIZE * floor(GRID_SIZE * 0.5)));
 	board = new Board();
 	frameRate(FRAME_RATE);
 }
@@ -14,15 +15,21 @@ function setup() {
 function draw() {
 	background(50);
 	if (SHOW_GRID) {
-
 		board.show();
 	}
+
 	snake.update();
 	snake.show();
+
 	if (snake.eat(food)) {
-		food.consume();
 		snake.grow();
-	};
+		if (snake.length == MAX_SCORE) {
+			snake.win();
+			return;
+		}
+		food.consume();
+	}
+
 	food.show();
 	updateScore();
 }
